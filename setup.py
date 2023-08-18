@@ -19,7 +19,7 @@ setuptools.setup(
     version="0.0.1",
     author="Michele Cafagna",
     author_email = "michele.cafagna@um.edu.mt",
-    description="a tool to perform targeted semantic multimodal ablation",
+    description="A tool to perform targeted semantic multimodal input ablation",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/michelecafagna26/vl-ablation",
