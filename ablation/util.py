@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 
 from pkg_resources import resource_string
 
@@ -19,6 +20,13 @@ def get_logger(logger_name):
 
 
 def load_config():
-    config_file = resource_string(__name__, './config.json')
-    with open(config_file) as fp:
-        return json.load(fp)
+
+    DIRNAME = os.path.dirname(__file__)
+    config_file = json.load(resource_string(__name__, './config.json'))
+
+    index_path = os.path.join(DIRNAME, config_file['coco_classes_index'])
+
+    if os.path.exists(index_path):
+        config_file['coco_classes_index'] = index_path
+
+        return config_file
