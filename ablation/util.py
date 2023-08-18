@@ -19,7 +19,6 @@ def get_logger(logger_name):
 
 
 def load_config():
-
     config_file = resource_string(__name__, './config.json')
     with open(config_file) as fp:
         return json.load(fp)

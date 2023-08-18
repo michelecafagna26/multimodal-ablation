@@ -13,7 +13,7 @@ A tool to perform targeted semantic multimodal input ablation. It allows to perf
 ## Requirements
 
 ```txt
-python >3.8
+python=>3.8
 pytorch
 torchvision
 ```
