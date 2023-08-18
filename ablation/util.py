@@ -1,6 +1,9 @@
 import json
 import logging
 
+from pkg_resources import resource_string
+
+
 def get_logger(logger_name):
 
     logger = logging.getLogger(logger_name)
@@ -14,7 +17,9 @@ def get_logger(logger_name):
 
     return logger
 
+
 def load_config():
 
-    with open("ablation/config.json") as fp:
+    config_file = resource_string(__name__, './config.json')
+    with open(config_file) as fp:
         return json.load(fp)
