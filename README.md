@@ -1,5 +1,5 @@
 # VL-Ablation
-*Official implementation of the **multimodal input ablation method** used in the paper: ["What Vision-Language Models 'See' when they See Scenes"](https://arxiv.org/abs/2109.07301).*
+*Official implementation of the **multimodal input ablation method** introduced in the paper: ["What Vision-Language Models 'See' when they See Scenes"](https://arxiv.org/abs/2109.07301).*
 
 ---
 A tool to perform targeted semantic multimodal input ablation. It allows to perform textual ablation based on noun-phrases instead of tokens, and visual ablation based on the content of a text.
@@ -34,7 +34,7 @@ python3 -m spacy download en_core_web_md
 Download the Fasttext model 
 ```bash
 wget https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
-tar -xf cc.en.300.bin.gz
+gzip -d cc.en.300.bin.gz
 ```
 
 ## Quick Start
