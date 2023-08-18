@@ -23,7 +23,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/michelecafagna26/vl-ablation",
     packages=setuptools.find_packages(),
-    package_data={'': ['**/*.ann']},
+    package_data={'': ['data/coco_classes_ft.ann', 'config.json']},
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
