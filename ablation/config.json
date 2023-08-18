@@ -1,0 +1,5 @@
+{
+  "spacy_model": "en_core_web_md",
+  "coco_classes_index": "ablation/data/coco_classes_ft.ann",
+  "fasttext_model" : "ablation/data/crawl-300d-2M-subword.bin"
+}
