@@ -16,5 +16,5 @@ def get_logger(logger_name):
 
 def load_config():
 
-    with open("ablation/config.json") as fp:
+    with open("./config.json") as fp:
         return json.load(fp)
