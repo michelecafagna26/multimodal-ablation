@@ -22,7 +22,7 @@ def get_logger(logger_name):
 def load_config():
 
     DIRNAME = os.path.dirname(__file__)
-    config_file = json.load(resource_string(__name__, './config.json'))
+    config_file = json.loads(resource_string(__name__, './config.json'))
 
     index_path = os.path.join(DIRNAME, config_file['coco_classes_index'])
 
