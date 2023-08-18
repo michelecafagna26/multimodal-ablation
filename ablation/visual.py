@@ -28,7 +28,7 @@ COCO_INSTANCE_CATEGORY_NAMES = [
 
 class VisualAblator():
 
-    def __init__(self, fasttext_model, device="cpu"):
+    def __init__(self, fasttext_model_path, device="cpu"):
 
         self.logger = get_logger(__name__)
         self.config = load_config()
@@ -46,7 +46,7 @@ class VisualAblator():
 
         # Loading Fasttext's model
         self.logger.warning('Loading Fasttext model, this may take a while...')
-        self.wv = load_facebook_model(fasttext_model).wv
+        self.wv = load_facebook_model(fasttext_model_path).wv
         self.logger.info("Fasttext Model loaded")
 
     # Extract bounding boxes
