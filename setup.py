@@ -1,4 +1,3 @@
-
 import pathlib
 
 import pkg_resources
@@ -18,12 +17,13 @@ setuptools.setup(
     name="ablation",
     version="0.0.1",
     author="Michele Cafagna",
-    author_email = "michele.cafagna@um.edu.mt",
+    author_email="michele.cafagna@um.edu.mt",
     description="A tool to perform targeted semantic multimodal input ablation",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/michelecafagna26/vl-ablation",
     packages=setuptools.find_packages(),
+    package_data={'': ['**/*.ann']},
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
