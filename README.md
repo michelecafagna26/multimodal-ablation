@@ -92,6 +92,11 @@ The ablator **identifies objects mentioned in the caption that are also present 
   'coco_idx': 1}]
 ```
 Note that the ablator can identify only the set of objects present in the COCO annotations.
+**Check the notebook [demo](https://github.com/michelecafagna26/vl-ablation/blob/main/demo.ipynb) to run this code.**
+
+## Hardware requirements
+
+Be aware that the fasttext embeddings are loaded in memory and they may take around 13-14 GB.
 
 ## Citation Information
 
