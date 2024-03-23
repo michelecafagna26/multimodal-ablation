@@ -113,7 +113,7 @@ v_ablator = VisualAblator(fasttext_model, distilled=False)
 
 ## Hardware requirements
 
-If you use the distilled model (enabled by default) the fasttext model will take less then 5GB.
+If you use the distilled model (enabled by default) the fasttext model will take less then 5 GB.
 
 Be aware that the original not-distilled fasttext embeddings takes around 13-14 GB in memory.
 
