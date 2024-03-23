@@ -38,7 +38,8 @@ Download the Spacy model
 python3 -m spacy download en_core_web_md
 ```
 
-Download the Fasttext model 
+### [Optional]
+If you want to use the full model, download the original not-distilled Fasttext model 
 ```bash
 wget https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
 gzip -d cc.en.300.bin.gz
@@ -75,7 +76,6 @@ from PIL import Image
 from io import BytesIO
 import requests
 
-fasttext_model = "path/to/fastext/model" # change accordingly
 img_url = "http://farm6.staticflickr.com/5003/5318500980_18b4dcf1fd_z.jpg"
 
 # load the image
@@ -83,8 +83,8 @@ response = requests.get(img_url)
 img = Image.open(BytesIO(response.content))
 
 # perform visual ablation based on the text content
-v_ablator = VisualAblator(fasttext_model)
-ablated_img, boxes = v_ablator(img, "a man in front of a stop sign", detection_th=0.9)
+v_ablator = VisualAblator()
+ablated_img, boxes = v_ablator(img, "a man in front of a stop sign")
 ```
 
 The ablator **identifies objects mentioned in the caption that are also present in the image**. **The match is performed semantically**, thus no exact match between the object label and the text is required.
