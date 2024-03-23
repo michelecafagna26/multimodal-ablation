@@ -20,6 +20,13 @@ torchvision
 
 ## Installation
 
+Install dependecies
+```bash
+pip install git+https://github.com/michelecafagna26/compress-fasttext
+```
+
+install the vl-ablation
+
 ```bash
 pip install git+https://github.com/michelecafagna26/vl-ablation.git#egg=ablation
 ```

@@ -24,7 +24,8 @@ setuptools.setup(
     url="https://github.com/michelecafagna26/vl-ablation",
     packages=setuptools.find_packages(),
     package_data={'': ['*.ann'],
-                  '': ['*.json']},
+                  '': ['*.json'],
+                  '': ['*.bin']},
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",

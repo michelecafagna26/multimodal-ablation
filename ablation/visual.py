@@ -7,6 +7,7 @@ from torchvision.transforms import ToTensor
 
 from annoy import AnnoyIndex
 from gensim.models.fasttext import load_facebook_model
+import compress_fasttext
 
 from ablation.util import load_config, get_logger
 
@@ -28,7 +29,7 @@ COCO_INSTANCE_CATEGORY_NAMES = [
 
 class VisualAblator():
 
-    def __init__(self, fasttext_model_path, device="cpu"):
+    def __init__(self, fasttext_model_path=None, device="cpu", distilled=True):
 
         self.logger = get_logger(__name__)
         self.config = load_config()
@@ -38,16 +39,34 @@ class VisualAblator():
         self.logger.info("Object Detector Loaded")
 
         self.nlp = spacy.load(self.config['spacy_model'])
+        
+        if distilled:
+        
+            # Loading the index
+            self.u = AnnoyIndex(300, 'angular')
+            self.u.load(self.config['coco_classes_index_distil'])  # super fast, it will just mmap the file
+            self.logger.info("COCO classes distilled index loaded")
 
-        # Loading the index
-        self.u = AnnoyIndex(300, 'angular')
-        self.u.load(self.config['coco_classes_index'])  # super fast, it will just mmap the file
-        self.logger.info("COCO classes index loaded")
+            # Loading Compressed Fasttext's model
+            self.logger.warning("Loading distilled Fasttext model. It shouldn't take long...")
+            self.wv = compress_fasttext.models.CompressedFastTextKeyedVectors.load(self.config['fasttext_model_distil'])
+            self.logger.info("Distilled Fasttext Model loaded")
 
-        # Loading Fasttext's model
-        self.logger.warning('Loading Fasttext model, this may take a while...')
-        self.wv = load_facebook_model(fasttext_model_path).wv
-        self.logger.info("Fasttext Model loaded")
+        else:
+
+            if not fasttext_model_path:
+                self.logger.info("If you're not using the distilled model, 'fasttext_model_path' needs to be specified.")
+                raise ValueError("If you're not using the distilled model, 'fasttext_model_path' needs to be specified.")
+
+            # Loading the index
+            self.u = AnnoyIndex(300, 'angular')
+            self.u.load(self.config['coco_classes_index'])  # super fast, it will just mmap the file
+            self.logger.info("COCO classes index loaded")
+
+            # Loading Fasttext's model
+            self.logger.warning('Loading Fasttext model, this may take a while...')
+            self.wv = load_facebook_model(fasttext_model_path).wv
+            self.logger.info("Fasttext Model loaded")
 
     # Extract bounding boxes
     def get_detections(self, image):
@@ -66,7 +85,7 @@ class VisualAblator():
     """
     Find COCO classes mentioned in the caption
     """
-    def extract_candidates(self, caption, th=0.8):
+    def extract_candidates(self, caption, th=0.98):
 
         doc = self.nlp(caption, disable=['tok2vec', 'parser', 'senter', 'ner'])
         tokens_lemmas = [token.lemma_ for token in doc]

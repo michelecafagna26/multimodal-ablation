@@ -25,8 +25,13 @@ def load_config():
     config_file = json.loads(resource_string(__name__, './config.json'))
 
     index_path = os.path.join(DIRNAME, config_file['coco_classes_index'])
+    distil_index_path = os.path.join(DIRNAME, config_file['coco_classes_index_distil'])
+    distil_model_path = os.path.join(DIRNAME, config_file['fasttext_model_distil'])
+
 
     if os.path.exists(index_path):
         config_file['coco_classes_index'] = index_path
+        config_file['coco_classes_index_distil'] = distil_index_path
+        config_file['fasttext_model_distil'] = distil_model_path
 
         return config_file

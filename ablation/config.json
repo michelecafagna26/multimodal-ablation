@@ -1,4 +1,6 @@
 {
   "spacy_model": "en_core_web_md",
-  "coco_classes_index": "data/coco_classes_ft.ann"
+  "coco_classes_index": "data/coco_classes_ft.ann",
+  "coco_classes_index_distil": "data/coco_classes_ft_distil.ann",
+  "fasttext_model_distil": "data/cc.en.300-distil.bin"
 }
