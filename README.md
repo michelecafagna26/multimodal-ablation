@@ -101,9 +101,9 @@ The ablator **identifies objects mentioned in the caption that are also present 
 Note that the ablator can identify only the set of objects present in the COCO annotations.
 **Check the notebook [demo](https://github.com/michelecafagna26/vl-ablation/blob/main/demo.ipynb) to run this code.**
 
-## Use the full Fasttest model
+## Use the original not-distilled Fasttest model
 
-If you want to use full model initialize the ablatori as follows:
+If you want to use full model initialize the ablator as follows:
 
 ```python
 fasttext_model = "path/to/the/model"
