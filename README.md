@@ -101,9 +101,21 @@ The ablator **identifies objects mentioned in the caption that are also present 
 Note that the ablator can identify only the set of objects present in the COCO annotations.
 **Check the notebook [demo](https://github.com/michelecafagna26/vl-ablation/blob/main/demo.ipynb) to run this code.**
 
+## Use the full Fasttest model
+
+If you want to use full model initialize the ablatori as follows:
+
+```python
+fasttext_model = "path/to/the/model"
+
+v_ablator = VisualAblator(fasttext_model, distilled=False)
+```
+
 ## Hardware requirements
 
-Be aware that the fasttext embeddings are loaded in memory and they may take around 13-14 GB.
+If you use the distilled model (enabled by default) the fasttext model will take less then 5GB.
+
+Be aware that the original not-distilled fasttext embeddings takes around 13-14 GB in memory.
 
 ## Citation Information
 
